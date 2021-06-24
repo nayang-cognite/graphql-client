@@ -56,17 +56,21 @@ function AddBook() {
           AuthorInput.value = '';
         }}
       >
+        <label for="title">Title</label>
         <input
+          name="title"
           ref={node => {
             TitleInput = node;
           }}
         />
+        <label for="author">Author</label>
         <input
+          name="author"
           ref={node => {
             AuthorInput = node;
           }}
         />
-        <button type="submit">Add Book</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );
