@@ -5,9 +5,9 @@ import {
   createHttpLink,
   gql,
   useQuery,
-   useMutation
+  useMutation
 } from '@apollo/client';
-import { useGetBooksQuery, useAddBookMutation } from './types.tsx'; 
+import { useGetBooksQuery, useAddBookMutation} from './types';
 
 const httpLink = createHttpLink({
    uri: "http://localhost:4000"
