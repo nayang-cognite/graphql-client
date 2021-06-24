@@ -7,6 +7,7 @@ import {
   useQuery,
    useMutation
 } from '@apollo/client';
+import { useGetBooksQuery, useAddBookMutation } from './types.tsx'; 
 
 const httpLink = createHttpLink({
    uri: "http://localhost:4000"
@@ -39,8 +40,8 @@ mutation AddBook($title:String!, $author:String!) {
 `
 function AddBook() {
   let TitleInput, AuthorInput;
-  const [addBook, { data }] = useMutation(ADD_BOOK);
-
+  // const [addBook, { data }] = useMutation(ADD_BOOK);
+  const [addBookMutation, { data, loading, error }] = useAddBookMutation();
   return (
     <div>
       <form
@@ -48,7 +49,8 @@ function AddBook() {
           e.preventDefault();
            console.log(TitleInput.value)
            console.log(AuthorInput.value)
-          addBook({ variables: { title: TitleInput.value, author: AuthorInput.value } });
+          // addBook({ variables: { title: TitleInput.value, author: AuthorInput.value } });
+          addBookMutation({variables: { title: TitleInput.value, author: AuthorInput.value}});
           TitleInput.value = '';
           AuthorInput.value = '';
         }}
@@ -74,7 +76,9 @@ function AddBook() {
 }
 
 function Books() {  
-  const {loading, error, data, refetch} = useQuery(QUERY)
+  //const {loading, error, data, refetch} = useQuery(QUERY)
+
+  const {loading, error, data, refetch} = useGetBooksQuery()
 
   if (loading) return <p>loading...</p>
   
