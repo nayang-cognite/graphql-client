@@ -41,9 +41,6 @@ function AddBook() {
   let TitleInput, AuthorInput;
   const [addBook, { data }] = useMutation(ADD_BOOK);
 
-   console.log("@@ data")
-   console.log(data)
-
   return (
     <div>
       <form
